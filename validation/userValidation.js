@@ -7,7 +7,7 @@ var UserSchema = Joi.object().keys({
 });
 
 module.exports = validateUser = (req, res, next) => {
-    console.log('In user validation ' + req.body.email);
+
     Joi.validate(req.body, UserSchema, (err, value) => {
         if (err) {
             res.json({
