@@ -9,6 +9,9 @@ const router = express.Router();
 //Load User module
 const User = require('../../models/User');
 
+//Load User validation module
+const Uservalidation = require('../../validation/userValidation');
+
 router.get('/test', (req, res) => {
     res.json({
         msg: "User works"
@@ -18,7 +21,7 @@ router.get('/test', (req, res) => {
 //@route     POST api/users/register
 //@desc      Register User
 //@access    Public
-router.post('/register', (req, res) => {
+router.post('/register', Uservalidation, (req, res) => {
 
     User.findOne({
         email: req.body.email
